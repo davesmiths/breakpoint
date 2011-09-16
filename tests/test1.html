@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class=" njs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0" />
+<title>Respondage</title>
+
+<script type="text/javascript">
+
+document.documentElement.className = document.documentElement.className.replace(/ njs/g, 'js');
+
+var ADAPT_CONFIG = [320, 480, 768, 1140];
+
+/*
+Original Code taken from: Adapt.js licensed under GPL and MIT.
+Read more here: http://adapt.960.gs
+
+And adapted/hacked here by Dave Smith to try out an idea.
+*/
+
+// Closure.
+(function(w, d, config, undefined) {
+  // If no config, exit.
+  if (!config) {
+    return;
+  }
+
+  // Empty vars to use later.
+  var url, url_old, timer;
+
+  // Adapt to width.
+  function adapt() {
+    // This clearInterval is for IE.
+    // Really it belongs in react(),
+    // but doesn't do any harm here.
+    clearInterval(timer);
+
+    // Parse browser width.
+    var width = w.innerWidth || d.documentElement.clientWidth || d.body.clientWidth || 0;
+    var i = 0, len = config.length, lte = -1, gte = 0, cwidth;
+    for (i; i < len; i++) {
+        cwidth = config[i];
+	    gte_re = new RegExp(" gte" + cwidth, "g");
+	    lte_re = new RegExp(" lte" + cwidth, "g");
+	    if (width <= cwidth) {
+		    if (width != cwidth && gte_re.test(document.documentElement.className)) {
+			    document.documentElement.className = document.documentElement.className.replace(gte_re, '');
+		    }
+		    if (lte_re.test(document.documentElement.className) === false) {
+			    document.documentElement.className += ' lte' + cwidth;
+		    }
+	    }
+	    if (width >= cwidth) {
+		    if (width != cwidth && lte_re.test(document.documentElement.className)) {
+			    document.documentElement.className = document.documentElement.className.replace(lte_re, '');
+		    }
+		    if (gte_re.test(document.documentElement.className) === false) {
+			    document.documentElement.className += ' gte' + cwidth;
+		    }
+	    }
+    }
+  }
+
+  // Fire off once.
+  adapt();
+
+  // Slight delay.
+  /*
+  function react() {
+    // Clear interval as window resize fires,
+    // so that it only calls adapt() when the
+    // user has finished resizing the window.
+    clearInterval(timer);
+    timer = setInterval(adapt, 100);
+  }*/
+  var react = adapt;
+
+    // Event listener for window resize,
+    // also triggered by phone rotation.
+    if (w.addEventListener) {
+      // Good browsers.
+      w.addEventListener('resize', react, false);
+    }
+    else if (w.attachEvent) {
+      // Legacy IE support.
+      w.attachEvent('onresize', react);
+    }
+    else {
+      // Old-school fallback.
+      w.onresize = react;
+    }
+
+// Pass in window, document, config, undefined.
+})(this, this.document, ADAPT_CONFIG);
+
+</script>
+
+<style type="text/css">
+
+p.test {background:#ddd;}
+@media screen and (min-width: 768px) {
+	/* Only want browsers here that understand media queries*/
+	.njs p.test {background:#009900;color:#fff;}
+}
+.gte768 p.test {background:#0055aa;color:#fff;}
+
+</style>
+
+
+</head>
+
+<body>
+<p><a href="../">dave-smith.info</a></p>
+<h1>Respondage</h1>
+<p>Created 2011 May 7.</p>
+<p>Played with an idea to add classes to the HTML element based on screen width by hacking away at <a href="http://adapt.960.gs">Adapt.js</a>. Classes like gte768 and lte768 etc. Check out the source - please excuse the lack of comments for my bits.</p>
+<p class="test">Test: Grey under 768, Blue over 768 with JS, Green over 768 without JS</p>
+<p>It works, but is reliant on JavaScript. Without JavaScript it can fall back onto Media Queries by using a .js and .njs switch, however it does end up meaning duplication of CSS. So maybe not a goer really, but who knows, it may have a use.</p>
+<p>May 9: Using a bit of server-side scripting could do the duplication donkey work.<br>
+	May 9: Using sensible defaults like a desktop screen size layout could also work.
+</p>
+</body>
+</html>
