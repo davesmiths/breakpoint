@@ -2,6 +2,8 @@
 Responds to screen width by toggling classes on the HTML element based on a customisable 
 array of viewport breakpoints.
 
+Minified version is 907 bytes.
+
 __Status: Working, mulling over the class names__
 
 # Test Page
