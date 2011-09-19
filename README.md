@@ -27,3 +27,6 @@ At Screen Width  Classes on the HTML Element
 800              gt320  gt768  gt320gt768
 
 ```
+
+# In the pipeline
+1. Avoid outputting non-sense classes like lte320lte768
