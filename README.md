@@ -66,14 +66,10 @@ Push new ones onto the default array:
 ```window['https://github.com/davesmith/breakpoint'].push(456);```
 
 Or use a completely new set of breakpoints, which overwrites the default:
-
 ```window['https://github.com/davesmith/breakpoint'].breakpoints = [320, 768];```
 
 # Perform a Manual Update
 The update function is called when the window resizes. If the breakpoints array
 is modified dynamically then update can be called without needing to resize the window.
-
 ```window['https://github.com/davesmith/breakpoint'].update();```
-
-
 
