@@ -23,7 +23,7 @@ At Screen Width  Classes on the HTML Element
 
 At Screen Width  Classes on the HTML Element
 320              lte320 lte768
-768              gt320 gt320lte768 lte768
+768              gt320  gt320lte768 lte768
 800              gt320  gt768
 
 ```
