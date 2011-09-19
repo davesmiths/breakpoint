@@ -1,84 +1,85 @@
-
 (function(win, doc, undefined) {
 
-    var respondage = window['https://github.com/davesmith/breakpoint'] = {
+    var breakpoint = window['https://github.com/davesmith/breakpoint'] = {
         
         widths: [320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440],
         // Breakpoints: http://www.slideshare.net/yiibu/pragmatic-responsive-design
-        // 320andup 320, 480, 768, 992 and 1382
+        // 320andup 320, 480, 768, 992 and 1382 (find the reasoning behind 992 and 1382)
         // HD 720, 1080, 1440
         
         update: function() {
             
             // Parse browser width.
-            var //respondage = win['https://github.com/davesmith/breakpoint'] || {},
-                browserWidth = win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth || 0,
+            var //breakpoint = win['https://github.com/davesmith/breakpoint'] || {},
+                browserWidth = win.innerWidth || docElement.clientWidth || doc.body.clientWidth || 0,
                 i = 0,
-                widths = respondage.widths,
-                len = widths.length,
-                lte = Number.POSITIVE_INFINITY,
-                gte = 0,
+                widths = breakpoint.widths,
+                widthsLength = widths.length,
                 width,
-                lteClassName,
-                gteClassName,
-                docElemClass = '';
+                docElementClass = '',
+                ltePrefix = 'lte',
+                gtPrefix = 'gt';
                 
             lte = [];
-            for (i; i < len; i++) {
+            for (i; i < widthsLength; i++) {
                 width = widths[i];
                 if (browserWidth <= width) {
                     lte.push(width);
-                    docElemClass += ' lte' + width;
+                    docElementClass += ' ' + ltePrefix + width;
                 }
             }
             lteLength = lte.length;
-            for (i = 0; i < len; i++) {
+            for (i = 0; i < widthsLength; i++) {
                 width = widths[i];
                 if (browserWidth > width) {
-                    docElemClass += ' gt' + width;
+                    docElementClass += ' ' + gtPrefix + width;
                     for (j = 0; j < lteLength; j++) {
-                        docElemClass += ' gt' + width + 'lte' + lte[j];
+                        docElementClass += ' ' + gtPrefix + width + ltePrefix + lte[j];
                     }
                 }
             }
-            doc.documentElement.className = doc.documentElement.className.replace(/ respondage.*respondage /g, ' respondage ' + docElemClass + ' respondage ');
+            docElement.className = docElement.className.replace(new RegExp(" " + breakpointString + ".*" + breakpointString + " ", 'g'), ' ' + breakpointString + ' ' + docElementClass + ' ' + breakpointString + ' ');
         }
-    };
+    },
+    docElement = doc.documentElement,
+    breakpointString = 'breakpoint';
 
     // Seed the HTML element class attribute value with a placeholder to be replaced.
-    doc.documentElement.className += ' respondage respondage ';
+    docElement.className += ' ' + breakpointString + ' ' + breakpointString + ' ';
     
     // Fire once.
-    respondage.update();
+    breakpoint.update();
     
     // Handle the resize event.
-    var removeEventListenerString = 'removeEventListener',
-    addEventListenerString = 'addEventListener',
+    var winRemoveEventListener = win.removeEventListener || false,
+    winAddEventListener = win.addEventListener || false,
+    winAttachEvent = win.attachEvent || false,
+    winDetachEvent = win.detachEvent || false,
     resizeString = 'resize';
 	function rzr() {
-		if (win[removeEventListenerString]) {
-			win[removeEventListenerString](resizeString, rzr, false);
+		if (winRemoveEventListener) {
+			winRemoveEventListener(resizeString, rzr, false);
 		}
-		else if (win.detachEvent) {
-			win.detachEvent("on" + resizeString, rzr);
+		else if (winDetachEvent) {
+			winDetachEvent('on' + resizeString, rzr);
 		}
-		respondage.update();
-		if (win[addEventListenerString]) {
-			win[addEventListenerString](resizeString, rzr, false);
+		breakpoint.update();
+		if (winAddEventListener) {
+			winAddEventListener(resizeString, rzr, false);
 		}
-		else if (win.attachEvent) {
-			win.attachEvent("on" + resizeString, rzr);
+		else if (winAttachEvent) {
+			winAttachEvent('on' + resizeString, rzr);
 		}
 	}
-	if (win[addEventListenerString]) {
-		win[addEventListenerString](resizeString, rzr, false);
+	if (winAddEventListener) {
+		winAddEventListener(resizeString, rzr, false);
 	}
-	else if (win.attachEvent) {
-		win.attachEvent("on" + resizeString, rzr);
+	else if (winAttachEvent) {
+		winAttachEvent('on' + resizeString, rzr);
 	}
     else {
         // Old-school fallback.
-        win.onresize = update;
+        win['on' + resizeString] = update;
     }
 // Pass in window, document, undefined.
 })(this, this.document);
