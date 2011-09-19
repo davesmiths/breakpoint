@@ -11,7 +11,7 @@ Download breakpoint and try out the test page where breakpoints can be edited on
 # Quick Illustration
 ```
 
-// If the breakpoint array = [768]
+If the breakpoint array = [768]
 
 At Screen Width  Classes on the HTML Element
 320              lte768
@@ -19,7 +19,7 @@ At Screen Width  Classes on the HTML Element
 1024             gt768
 
 
-// If the breakpoint array = [768, 320]
+If the breakpoint array = [768, 320]
 
 At Screen Width  Classes on the HTML Element
 320              lte320 lte768
