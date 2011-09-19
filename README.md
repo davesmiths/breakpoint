@@ -64,7 +64,9 @@ If the breakpoints array = [768, 320]
 
 Push new ones onto the default array:
 
-```window['https://github.com/davesmith/breakpoint'].push(456);```
+```
+window['https://github.com/davesmith/breakpoint'].push(456);
+```
 
 Or use a completely new set of breakpoints, which overwrites the default:
 
