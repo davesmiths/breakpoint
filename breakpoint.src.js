@@ -1,13 +1,7 @@
-/*
-Original Code taken from: Adapt.js licensed under GPL and MIT.
-Read more here: http://adapt.960.gs
-
-And adapted/hacked here by Dave Smith to try out an idea.
-*/
 
 (function(win, doc, undefined) {
 
-    var respondage = window['https://github.com/davesmith/respondage'] = {
+    var respondage = window['https://github.com/davesmith/breakpoint'] = {
         
         widths: [320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440],
         // Breakpoints: http://www.slideshare.net/yiibu/pragmatic-responsive-design
@@ -17,7 +11,7 @@ And adapted/hacked here by Dave Smith to try out an idea.
         update: function() {
             
             // Parse browser width.
-            var //respondage = win['https://github.com/davesmith/respondage'] || {},
+            var //respondage = win['https://github.com/davesmith/breakpoint'] || {},
                 browserWidth = win.innerWidth || doc.documentElement.clientWidth || doc.body.clientWidth || 0,
                 i = 0,
                 widths = respondage.widths,

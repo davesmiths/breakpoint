@@ -4,9 +4,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="initial-scale=1.0" />
 
-<title>Respondage</title>
+<title>Breakpoint</title>
 
-<script type="text/javascript" src="../respondage.src.js"></script>
+<script type="text/javascript" src="../breakpoint.src.js"></script>
 
 <script type="text/javascript">
     var demo = function() {
@@ -14,7 +14,7 @@
             cssEl = document.getElementById('css'),
             htmlEl = document.getElementById('html'),
             i = 0, j, k,
-            widths = window['https://github.com/davesmith/respondage'].widths,
+            widths = window['https://github.com/davesmith/breakpoint'].widths,
             widthsLength = widths.length,
             css = '',
             html = '',
@@ -62,8 +62,8 @@
         widths.sort(function(a, b) {
             return a - b;
         });
-        window['https://github.com/davesmith/respondage'].widths = widths;
-        window['https://github.com/davesmith/respondage'].update();
+        window['https://github.com/davesmith/breakpoint'].widths = widths;
+        window['https://github.com/davesmith/breakpoint'].update();
         demo();
     };
     var input;
@@ -87,7 +87,7 @@ input {width:98%;}
 </head>
 
 <body>
-<h1>Respondage</h1>
+<h1>Breakpoint</h1>
 <input value="320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440" id="input" />
 <div id="html">HTML</div>
 </body>
