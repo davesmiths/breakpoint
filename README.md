@@ -22,11 +22,8 @@ At Screen Width  Classes on the HTML Element
 // If the breakpoint array = [768, 320]
 
 At Screen Width  Classes on the HTML Element
-320              lte320 lte768 lte320lte768
-768              gt320  lte768 gt320lte768
-800              gt320  gt768  gt320gt768
+320              lte320 lte768
+768              gt320 gt320lte768 lte768
+800              gt320  gt768
 
 ```
-
-# In the pipeline
-1. Avoid outputting non-sense classes like lte320lte768
