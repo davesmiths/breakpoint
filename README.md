@@ -19,46 +19,22 @@ Download breakpoint and try out the test page where breakpoints can be edited on
 # Quick Illustration
 
 If the breakpoints array = [768]
-
-<table>
-    <tr>
-        <th>At Screen Width</th>
-        <th>Classes on the HTML Element</th>
-    </tr>
-    <tr>
-        <td>320</td>
-        <td>lte768</td>
-    </tr>
-    <tr>
-        <td>768</td>
-        <td>lte768</td>
-    </tr>
-    <tr>
-        <td>1024</td>
-        <td>gt768</td>
-    </tr>
-</table>
+```
+At Screen Width     Classes on the HTML Element
+===============================================
+320                 lte768
+768                 lte768
+1024                gt768
+```
 
 If the breakpoints array = [768, 320]
-
-<table>
-    <tr>
-        <th>At Screen Width</th>
-        <th>Classes on the HTML Element</th>
-    </tr>
-    <tr>
-        <td>320</td>
-        <td>lte320 lte768</td>
-    </tr>
-    <tr>
-        <td>768</td>
-        <td>gt320 gt320lte768 lte768</td>
-    </tr>
-    <tr>
-        <td>1024</td>
-        <td>gt320 gt768</td>
-    </tr>
-</table>
+```
+At Screen Width     Classes on the HTML Element
+===============================================
+320                 lte320 lte768
+768                 gt320 gt320lte768 lte768
+1024                gt320 gt768
+```
 
 # Using Custom Breakpoints
 
