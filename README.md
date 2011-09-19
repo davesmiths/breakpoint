@@ -4,14 +4,25 @@ array of viewport breakpoints.
 
 __Status: Working, mulling over the class names__
 
-# Show
-Try out the test page where the breakpoints can be edited on the fly.
+# Test Page
+The test page where the breakpoints can be edited on the fly.
 
 # Illustration
 ```
+
 // If the breakpoint array = [768]
-Screen Width    Classes on the HTML Element
-< 768           lte768
-= 768           lte768
-> 768           gt768
+
+Screen Width  Classes on the HTML Element
+320           lte768
+768           lte768
+1024          gt768
+
+
+// If the breakpoint array = [320, 768]
+
+Screen Width  Classes on the HTML Element
+320           lte320 lte768 lte320lte768
+768           gt320  lte768 gt320lte768
+800           gt320  gt768  gt320gt768
+
 ```
