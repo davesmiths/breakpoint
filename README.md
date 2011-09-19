@@ -9,14 +9,13 @@ __Status: Working, just mulling over the class names__
 
 Include breakpoint.min.js in your web app in the normal way:
 
-```<script src="breakpoint.min.js"></script>```
+```
+<script src="breakpoint.min.js"></script>
+```
 
 Breakpoint has no dependencies and can be used standalone and should not interfere with any JavaScript libraries or frameworks.
 
-# Test Page
-Download breakpoint and try out the test page where breakpoints can be edited on the fly.
-
-# Quick Illustration
+# Rough Illustration
 
 If the breakpoints array = [768]
 
@@ -37,6 +36,9 @@ At Screen Width     Classes on the HTML Element
 768                 gt320 gt320lte768 lte768
 1024                gt320 gt768
 ```
+
+# Test Page
+See http://www.dave-smith.info/breakpoint/tests/test1.html or download breakpoint and try out the test page where breakpoints can be edited on the fly.
 
 # Using Custom Breakpoints
 
@@ -59,4 +61,3 @@ is modified dynamically then update can be called without needing to resize the 
 ```
 window['https://github.com/davesmith/breakpoint'].update();
 ```
-
