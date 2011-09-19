@@ -9,7 +9,7 @@ __Status: Working, just mulling over the class names__
 
 Include breakpoint.min.js in your web app in the normal way:
 
-<script src="breakpoint.min.js"></script>
+```<script src="breakpoint.min.js"></script>```
 
 Breakpoint has no dependencies and can be used standalone and should not interfere with any JavaScript libraries or frameworks.
 
