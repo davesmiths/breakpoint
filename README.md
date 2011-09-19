@@ -17,9 +17,6 @@ Breakpoint has no dependencies and can be used standalone and should not interfe
 Download breakpoint and try out the test page where breakpoints can be edited on the fly.
 
 # Quick Illustration
-```
-
-If the breakpoints array = [768]
 
 <table>
     <tr>
@@ -28,6 +25,9 @@ If the breakpoints array = [768]
     </tr>
 </table>
 
+```
+
+If the breakpoints array = [768]
 At Screen Width     Classes on the HTML Element
 320                 lte768
 768                 lte768
