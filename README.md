@@ -1,5 +1,5 @@
 # Breakpoint
-Responds to screen width by toggling classes on the HTML element based on a customisable 
+Responds to screen width by toggling classes on the document element using an
 array of viewport breakpoints.
 
 Minified version is 907 bytes.
