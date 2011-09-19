@@ -1,6 +1,5 @@
 # Breakpoint
-Responds to screen width by toggling classes on the document element using an
-array of viewport breakpoints.
+Breakpoint responds to screen size and applies viewport breakpoint classes to the document element
 
 Minified version is 907 bytes.
 
