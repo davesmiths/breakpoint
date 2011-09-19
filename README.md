@@ -21,7 +21,7 @@ Download breakpoint and try out the test page where breakpoints can be edited on
 If the breakpoints array = [768]
 ```
 At Screen Width     Classes on the HTML Element
-===============================================
+-----------------------------------------------
 320                 lte768
 768                 lte768
 1024                gt768
@@ -30,7 +30,7 @@ At Screen Width     Classes on the HTML Element
 If the breakpoints array = [768, 320]
 ```
 At Screen Width     Classes on the HTML Element
-===============================================
+-----------------------------------------------
 320                 lte320 lte768
 768                 gt320 gt320lte768 lte768
 1024                gt320 gt768
