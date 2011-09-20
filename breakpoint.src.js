@@ -2,7 +2,7 @@
 
     var breakpoint = window['https://github.com/davesmith/breakpoint'] = {
         
-        breakpoints: [320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440],
+        widths: [320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440],
         // Breakpoints: http://www.slideshare.net/yiibu/pragmatic-responsive-design
         // 320andup 320, 480, 768, 992 and 1382 (find the reasoning behind 992 and 1382)
         // HD 720, 1080, 1440
@@ -13,28 +13,28 @@
             var //breakpoint = win['https://github.com/davesmith/breakpoint'] || {},
                 browserWidth = win.innerWidth || docElement.clientWidth || doc.body.clientWidth || 0,
                 i = 0,
-                breakpoints = breakpoint.breakpoints,
-                breakpointsLength = breakpoints.length,
-                breakpoints_i,
+                widths = breakpoint.widths,
+                widthsLength = widths.length,
+                width,
                 docElementClass = '',
                 ltePrefix = 'lte',
                 gtPrefix = 'gt';
                 
             lte = [];
-            for (i; i < breakpointsLength; i++) {
-                breakpoints_i = breakpoints[i];
-                if (browserWidth <= breakpoints_i) {
-                    lte.push(breakpoints_i);
-                    docElementClass += ' ' + ltePrefix + breakpoints_i;
+            for (i; i < widthsLength; i++) {
+                width = widths[i];
+                if (browserWidth <= width) {
+                    lte.push(width);
+                    docElementClass += ' ' + ltePrefix + width;
                 }
             }
             lteLength = lte.length;
-            for (i = 0; i < breakpointsLength; i++) {
-                breakpoints_i = breakpoints[i];
-                if (browserWidth > breakpoints_i) {
-                    docElementClass += ' ' + gtPrefix + breakpoints_i;
+            for (i = 0; i < widthsLength; i++) {
+                width = widths[i];
+                if (browserWidth > width) {
+                    docElementClass += ' ' + gtPrefix + width;
                     for (j = 0; j < lteLength; j++) {
-                        docElementClass += ' ' + gtPrefix + breakpoints_i + ltePrefix + lte[j];
+                        docElementClass += ' ' + gtPrefix + width + ltePrefix + lte[j];
                     }
                 }
             }

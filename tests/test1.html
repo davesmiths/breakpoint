@@ -14,28 +14,28 @@
             cssEl = document.getElementById('css'),
             htmlEl = document.getElementById('html'),
             i = 0, j, k,
-            breakpoints = window['https://github.com/davesmith/breakpoint'].breakpoints,
-            breakpointsLength = breakpoints.length,
+            widths = window['https://github.com/davesmith/breakpoint'].widths,
+            widthsLength = widths.length,
             css = '',
             html = '',
             width;
         
-        css += '.col {width:' + 100/(breakpointsLength + 1) + '%;}';
+        css += '.col {width:' + 100/(widthsLength + 1) + '%;}';
         
         html += '<div class="col">';
-        for (j = 0; j < breakpointsLength; j++) {
-            width = breakpoints[j];
+        for (j = 0; j < widthsLength; j++) {
+            width = widths[j];
             css += '.lte' + width + ' .test' + i + ',';
             html += '<div class="test'+i+'">lte' + width + '</div>';
             i++;
         }
         html += '</div>';
         
-        for (j = 0; j < breakpointsLength - 1; j++) {
-            width = breakpoints[j];
+        for (j = 0; j < widthsLength - 1; j++) {
+            width = widths[j];
             html += '<div class="col">';
-            for (k = 0; k < breakpointsLength; k++) {
-                width2 = breakpoints[k];
+            for (k = 0; k < widthsLength; k++) {
+                width2 = widths[k];
                 css += '.gt' + width + 'lte' + width2 + ' .test' + i + ',';
                 html += '<div class="test'+i+' ' + ((width >= width2) ? 'grey-out' : '') + '">gt' + width + 'lte' + width2 + '</div>';
                 i++;
@@ -43,8 +43,8 @@
             html += '</div>';
         }
         html += '<div class="col">';
-        for (j = 0; j < breakpointsLength; j++) {
-            width = breakpoints[j];;
+        for (j = 0; j < widthsLength; j++) {
+            width = widths[j];;
             css += '.gt' + width + ' .test' + i + ',';
             html += '<div class="test'+i+'">gt' + width + '</div>';
             i++;
@@ -55,14 +55,14 @@
         cssEl.innerHTML = css + ' asdaasd {background:#090;color:#fff;}';
     };
     var updateDemo = function() {
-        breakpoints = input.value.split(',');
-        for (var i = 0; i < breakpoints.length; i++) {
-            breakpoints[i] = breakpoints[i].replace(/\s+/g, '') * 1;
+        widths = input.value.split(',');
+        for (var i = 0; i < widths.length; i++) {
+            widths[i] = widths[i].replace(/\s+/g, '') * 1;
         }
-        breakpoints.sort(function(a, b) {
+        widths.sort(function(a, b) {
             return a - b;
         });
-        window['https://github.com/davesmith/breakpoint'].breakpoints = breakpoints;
+        window['https://github.com/davesmith/breakpoint'].widths = widths;
         window['https://github.com/davesmith/breakpoint'].update();
         demo();
     };
@@ -88,7 +88,9 @@ input {width:98%;}
 
 <body>
 <h1>Breakpoint</h1>
-<p><a href="https://github.com/davesmith/breakpoint">github.com/davesmith/breakpoint</a></p>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/davesmith/breakpoint" data-count="horizontal" data-via="breakpointjs">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+<br /><a href="https://github.com/davesmith/breakpoint">github.com/davesmith/breakpoint</a></p>
+
 <input value="320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440" id="input" />
 <div id="html">HTML</div>
 </body>
