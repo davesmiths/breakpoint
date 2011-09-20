@@ -56,7 +56,7 @@ window['https://github.com/davesmith/breakpoint'].breakpoints = [320, 768];
 
 # Perform a Manual Update
 The update function is called when the window resizes. If the breakpoints array
-is modified dynamically then update can be called without needing to resize the window.
+is modified dynamically then an update can be called without needing to resize the window.
 
 ```
 window['https://github.com/davesmith/breakpoint'].update();
