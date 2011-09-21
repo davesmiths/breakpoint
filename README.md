@@ -3,7 +3,7 @@ Breakpoint responds to screen size and applies viewport breakpoint classes to th
 
 Small, cross-browser and fast; another string for the responsive bow.
 
-Started as a what-if experiment it therefore may or may not be useful, but works the way I imagined. It doesn't act as a polyfill very well, but it wasn't meant to, as the CSS inside a Media Query would have to be repeated for the breakpoint classes. There maybe a way around that I'm not seeing yet; answers on a postcard. But a sensible use of it would be in a mobile-first context.
+It started as a what-if experiment and therefore hope it is useful, but works well and the way I imagined. It doesn't act as a polyfill very well, but it wasn't meant to, as the CSS inside a Media Query would have to be repeated for the breakpoint classes. There maybe a way around that I'm not aware of; answers on a postcard. But a sensible use of it would be in a mobile-first context.
 
 Minified version is 917 bytes.
 
