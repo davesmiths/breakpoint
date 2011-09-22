@@ -53,7 +53,7 @@
         html += '</div>';
 
         htmlEl.innerHTML = html;
-    	
+        
 		var span = document.createElement('span');
 		span.id = "spanner";
         document.getElementsByTagName('head')[0].insertBefore(span, cssEl);
@@ -100,6 +100,7 @@ input {width:98%;}
 <input value="320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440" id="input" />
 <p class="kwn">Grid of every possible breakpoint class:</p>
 <div id="html">HTML</div>
-<p>Resize the browser to see breakpoint in action.<br />Each cell above shows the name of a breakpoint class applied to the document element, except for greyed-out cells like gt320lte320 which are not applied. When the class active on the document element it will appear green.</p>
+<p>Resize the browser to see breakpoint in action.<br />
+Green cells indicate the class is active on the document element. Greyed-out cells like gt320lte320 are redundant and are never applied.</p>
 </body>
 </html>
