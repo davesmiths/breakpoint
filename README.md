@@ -7,7 +7,7 @@ It started as a what-if experiment without a cause and therefore hope it is usef
 
 __Status: Ready__
 
-Minified version is 917 bytes.
+Minified version is 852 bytes.
 
 # Usage
 
