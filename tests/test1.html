@@ -14,55 +14,60 @@
             cssEl = document.getElementById('css'),
             htmlEl = document.getElementById('html'),
             i = 0, j, k,
-            widths = window['https://github.com/davesmith/breakpoint'].widths,
-            widthsLength = widths.length,
+            breakpoints = window['https://github.com/davesmith/breakpoint'].breakpoints,
+            breakpointsLength = breakpoints.length,
             css = '',
             html = '',
-            width;
+            breakpoint_j,
+            breakpoint_k;
         
-        css += '.col {width:' + 100/(widthsLength + 1) + '%;}';
+        css += '.col {width:' + 100/(breakpointsLength + 1) + '%;}';
         
         html += '<div class="col">';
-        for (j = 0; j < widthsLength; j++) {
-            width = widths[j];
-            css += '.lte' + width + ' .test' + i + ',';
-            html += '<div class="test'+i+'">lte' + width + '</div>';
+        for (j = 0; j < breakpointsLength; j++) {
+            breakpoint_j = breakpoints[j];
+            css += '.lte' + breakpoint_j + ' .test' + i + ',';
+            html += '<div class="test'+i+'">lte' + breakpoint_j + '</div>';
             i++;
         }
         html += '</div>';
         
-        for (j = 0; j < widthsLength - 1; j++) {
-            width = widths[j];
+        for (j = 0; j < breakpointsLength - 1; j++) {
+            breakpoint_j = breakpoints[j];
             html += '<div class="col">';
-            for (k = 0; k < widthsLength; k++) {
-                width2 = widths[k];
-                css += '.gt' + width + 'lte' + width2 + ' .test' + i + ',';
-                html += '<div class="test'+i+' ' + ((width >= width2) ? 'grey-out' : '') + '">gt' + width + 'lte' + width2 + '</div>';
+            for (k = 0; k < breakpointsLength; k++) {
+                breakpoint_k = breakpoints[k];
+                css += '.gt' + breakpoint_j + 'lte' + breakpoint_k + ' .test' + i + ',';
+                html += '<div class="test'+i+' ' + ((breakpoint_j >= breakpoint_k) ? 'grey-out' : '') + '">gt' + breakpoint_j + 'lte' + breakpoint_k + '</div>';
                 i++;
             }
             html += '</div>';
         }
         html += '<div class="col">';
-        for (j = 0; j < widthsLength; j++) {
-            width = widths[j];;
-            css += '.gt' + width + ' .test' + i + ',';
-            html += '<div class="test'+i+'">gt' + width + '</div>';
+        for (j = 0; j < breakpointsLength; j++) {
+            breakpoint_j = breakpoints[j];;
+            css += '.gt' + breakpoint_j + ' .test' + i + ',';
+            html += '<div class="test'+i+'">gt' + breakpoint_j + '</div>';
             i++;
         }
         html += '</div>';
 
         htmlEl.innerHTML = html;
-        cssEl.innerHTML = css + ' asdaasd {background:#090;color:#fff;}';
+    	
+		var span = document.createElement('span');
+		span.id = "spanner";
+        document.getElementsByTagName('head')[0].insertBefore(span, cssEl);
+		document.getElementById('spanner').innerHTML = "_" + '<style>' + css + ' asdaasd {background:#090;color:#fff;}</style>';
     };
     var updateDemo = function() {
-        widths = input.value.split(',');
-        for (var i = 0; i < widths.length; i++) {
-            widths[i] = widths[i].replace(/\s+/g, '') * 1;
+        var breakpoints = input.value.split(',');
+        for (var i = 0; i < breakpoints.length; i++) {
+            breakpoints[i] = breakpoints[i].replace(/\s+/g, '') * 1;
         }
-        widths.sort(function(a, b) {
+        breakpoints.sort(function(a, b) {
             return a - b;
         });
-        window['https://github.com/davesmith/breakpoint'].widths = widths;
+        window['https://github.com/davesmith/breakpoint'].breakpoints = breakpoints;
         window['https://github.com/davesmith/breakpoint'].update();
         demo();
     };
@@ -76,10 +81,11 @@
 </script>
 <style type="text/css">
 input {width:98%;}
-.col {float:left;}
+.col {float:left;overflow:hidden;margin-right:-1px;}
 .col div {background:#ddd;padding:4px;margin:0;font-size:70%;font-family:verdana;}
 .col .grey-out {background:#ddd;color:#aaa;}
-
+.kwn {margin-bottom:0;}
+#html {margin-bottom:1em;overflow:hidden;}
 </style>
 
 <style type="text/css" id="css"></style>
@@ -90,11 +96,10 @@ input {width:98%;}
 <h1>Breakpoint</h1>
 <p><a href="https://twitter.com/share" class="twitter-share-button" data-url="https://github.com/davesmith/breakpoint" data-count="horizontal" data-via="breakpointjs">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <br /><a href="https://github.com/davesmith/breakpoint">github.com/davesmith/breakpoint</a></p>
-<label for="input">Breakpoint array:</label>
+<label for="input">The breakpoint array:</label>
 <input value="320, 480, 600, 720, 768, 800, 1024, 1080, 1280, 1440" id="input" />
-<p class="kwn">Grid showing every breakpoint class possible:</p>
+<p class="kwn">Grid of every possible breakpoint class:</p>
 <div id="html">HTML</div>
-<p>Each cell above shows the name of a breakpoint class applied to the document element, except for greyed-out cells like gt320lte320 which are not applied.</p>
-<p>When the class active on the document element it will appear green. Resize the browser to see breakpoint in action.</p>
+<p>Resize the browser to see breakpoint in action.<br />Each cell above shows the name of a breakpoint class applied to the document element, except for greyed-out cells like gt320lte320 which are not applied. When the class active on the document element it will appear green.</p>
 </body>
 </html>
